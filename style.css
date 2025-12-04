@@ -119,3 +119,23 @@ body {
 }
 
 /* ADD YOUR LIKE AND DISLIKE HOVER/MOUSEOVER CSS CODE HERE */
+.score {
+	border-radius: 50%;
+	font-weight: bold;
+	text-align: center;
+	transition: 0.4s;
+}
+
+.likes:hover, .dislikes:hover {
+	transform: scale(1.15);
+}
+
+.likes, .dislikes {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: 0.3s ease;
+}
