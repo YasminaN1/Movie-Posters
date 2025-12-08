@@ -21,25 +21,94 @@
 */
 
 
-const vue_app = Vue.createApp({
-      // This automatically imports your movies.json file and puts it into
-      //   the variable: movies
-      created () {
-            fetch('movies.json').then(response => response.json()).then(json => {
-                  this.movies = json
-            })
-      },
-      data() {
-        return {
-            // This holds your movies.json data.
-            movies: [],
-            /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
+// const vue_app = Vue.createApp({
+//       // This automatically imports your movies.json file and puts it into
+//       //   the variable: movies
+//       created () {
+//             fetch('movies.json').then(response => response.json()).then(json => {
+//                   this.movies = json
+//             })
+//       },
+//       data() {
+//         return {
+//             // This holds your movies.json data.
+//             movies: [],
+//             /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
          
-      }
-    },
-      methods: {
-            /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
-      }
+//       }
+//     },
+//       methods: {
+//             /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
+//       }
+// })
+
+// vue_app.mount("#vue_app")
+
+
+
+const vue_app = Vue.createApp({
+	created () {
+		fetch('movies.json')
+			.then(response => response.json())
+			.then(json => {
+				this.movies = json
+
+				// =========================================================== //
+				// ✅ STEP 11 COMMIT (Add 3 favorite movies to JSON list)       //
+				// Note: JSON must already be updated before this commit        //
+				// COMMIT MESSAGE: "Added 3 new favorite movies to movie list"  //
+				// =========================================================== //
+			})
+	},
+
+	data() {
+		return {
+			movies: [],
+
+			// =========================================================== //
+			// ✅ STEP 3 COMMIT                                            //
+			// COMMIT MESSAGE: "Created title, owner, githubLink variables" //
+			// =========================================================== //
+			title: "IMDB + My Top Movies",
+			owner: "Yaz's Github",
+			githubLink: "https://github.com/YasminaN1/Movie-Posters"
+		}
+	},
+
+	methods: {
+
+		// =========================================================== //
+		// ✅ STEP 7 COMMIT (Created required Vue functions)            //
+		// COMMIT MESSAGE: "Added like(), dislike(), makeTextDate(),    //
+		//   posterClick(), timeText(), timeText()"                     //
+		// =========================================================== //
+
+		makeTextDate(dateArray) {
+			const [year, month, day] = dateArray
+			return `${year}-${month}-${day}`
+		},
+
+		timeText(minutes) {
+			return `${minutes} mins`
+		},
+
+		timeText(minutes) {
+			return `${(minutes/60).toFixed(1)} hrs`
+		},
+
+		like(index){
+			this.movies[index].likes++
+		},
+
+		dislike(index){
+			this.movies[index].dislikes++
+		},
+
+		posterClick(index){
+			let movie = this.movies[index]
+			movie.posterindex = (movie.posterindex + 1) % movie.posters.length
+		}
+	}
 })
 
 vue_app.mount("#vue_app")

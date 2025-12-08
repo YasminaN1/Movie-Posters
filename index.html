@@ -6,50 +6,77 @@
 
 	<title>IS219 Gallery (Project 3)</title>
 
-	<!-- Our CSS File along with Boostrap, and Bootstrap Icon Styles-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" type='text/css' href="style.css"/>
-	  
-	<!-- DO NOT CHANGE ANYTHING ABOVE THIS LINE-->
 
-	<!-- Javascript Framework (e.g., vue.js) (ADD HERE) -->
-<script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+	<!-- ========================================= -->
+	<!-- ✅ STEP 1 COMMIT (Add Vue JS in <head>)    -->
+	<!-- COMMIT MESSAGE: "Added Vue.js to HTML head" -->
+	<!-- ========================================= -->
+	<script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
 
 
 </head>
 
-  <body>
+<body>
+
+	<!-- =============================================================== -->
+	<!-- ✅ STEP 2 COMMIT (Bind Vue app to HTML tag)                      -->
+	<!-- COMMIT MESSAGE: "Added Vue app binding div container (#vue_app)" -->
+	<!-- =============================================================== -->
 	<div id="vue_app" class="container">
 
 	    <div class="header">
-
-	      <div class="container">
-	        <h1 id="app_title">IMDB + Yazzle Dazzle's Top 8 Movies</h1>
-	      </div>
-
+	        <h1>{{ title }}</h1> <!-- ✅ STEP 4 COMMIT edits -->
 	    </div>
 
 	    <div class="main">
-
 	      <div class="row">
 
-	        <div class="col-md-6">
+	        <!-- =========================================================== -->
+	        <!-- ✅ STEP 6 COMMIT (Loop through movies using Vue v-for)        -->
+	        <!-- COMMIT MESSAGE: "Added Vue movie loop (v-for)"               -->
+	        <!-- =========================================================== -->
+	        <div class="col-md-6" v-for="(movie, index) in movies" :key="index">
 	            <div class="thumbnail">
 
-						<img class="poster img-fluid" />
-						<div class="imageInfo">%posterindex%</div>
+					<!-- =========================================================== -->
+					<!-- ✅ STEP 8 COMMIT (Click handlers for poster, like, dislike)   -->
+					<!-- COMMIT MESSAGE: "Added Vue click handlers"                   -->
+					<!-- =========================================================== -->
 
-						<p class="title">%title% (%country%)</p>
-						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> %iscore% </p>
-						<p class="runtime">Runtime: %runtime%</p>
-						<p class="released">Released: %released% | Rated: %rating%</p>
-						<p class="websites">Websites: <a> imdb </a> | <a>website</a></p>
+					<img class="poster img-fluid" 
+						:src="movie.posters[movie.posterindex]" 
+						@click="posterClick(index)" />
 
-			            <div class="social">
-			              <p class="likes"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> %likes%</p>
-			              <p class="dislikes"><i class="bi bi-hand-thumbs-down"></i> %dislikes%</p>
-			            </div>
+					<!-- ====================================================================== -->
+					<!-- ✅ STEP 9 COMMIT (Update imageInfo class to show poster X of Y)         -->
+					<!-- COMMIT MESSAGE: "Updated poster index display (X of Y) for each movie"  -->
+					<!-- ====================================================================== -->
+					<div class="imageInfo">
+						Poster {{ movie.posterindex + 1 }} of {{ movie.posters.length }}
+					</div>
+
+					<!-- =========================================================== -->
+					<!-- ✅ STEP 3 COMMIT (Create title, owner, githubLink vars)      -->
+					<!-- COMMIT MESSAGE: "Created title, owner, githubLink variables" -->
+					<!-- =========================================================== -->
+
+					<p class="title">{{ movie.title }} ({{ movie.country }})</p><!-- ✅ STEP 5 COMMIT -->
+					<p class="score">{{ movie.iscore }}</p>
+					<p class="runtime">Runtime: {{ timeText(movie.runtime) }}</p>
+					<p class="released">Released: {{ makeTextDate(movie.released) }} | Rated: {{ movie.rating }}</p>
+
+					<p class="websites">
+						Websites: <a :href="movie.imdb">IMDB</a> | <a :href="movie.website">Official</a>
+					</p>
+
+		            <div class="social">
+		                <p class="likes" @click="like(index)"><i class="bi bi-hand-thumbs-up"></i> {{ movie.likes }}</p>
+		                <p class="dislikes" @click="dislike(index)"><i class="bi bi-hand-thumbs-down"></i> {{ movie.dislikes }}</p>
+		            </div>
+
 	            </div>
 	        </div>
 
@@ -57,17 +84,17 @@
 	    </div>
 
 	    <div class="footer">
-	      <div class="container">
-			<a id="github" class="btn btn-lg btn-warning">
-				<i class="bi bi-github me-2"></i>%owner%
+			<!-- =========================================================== -->
+			<!-- ✅ STEP 4 COMMIT (Fix Vue syntax for owner + github link)    -->
+			<!-- COMMIT MESSAGE: "Fixed Vue syntax for title, owner, link"   -->
+			<!-- =========================================================== -->
+			<a :href="githubLink" id="github" class="btn btn-lg btn-warning">
+				<i class="bi bi-github me-2"></i>{{ owner }}
 	  		</a>
-	      </div>
 	    </div>
 	</div>
 
-  	<!-- This load the Vue.js code -->
 	<script type="text/javascript" src="site.js"></script>
-
 
 </body>
 </html>
