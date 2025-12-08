@@ -52,12 +52,6 @@ const vue_app = Vue.createApp({
 			.then(response => response.json())
 			.then(json => {
 				this.movies = json
-
-				// =========================================================== //
-				// ✅ STEP 11 COMMIT (Add 3 favorite movies to JSON list)       //
-				// Note: JSON must already be updated before this commit        //
-				// COMMIT MESSAGE: "Added 3 new favorite movies to movie list"  //
-				// =========================================================== //
 			})
 	},
 
@@ -71,13 +65,6 @@ const vue_app = Vue.createApp({
 	},
 
 	methods: {
-
-		// =========================================================== //
-		// ✅ STEP 7 COMMIT (Created required Vue functions)            //
-		// COMMIT MESSAGE: "Added like(), dislike(), makeTextDate(),    //
-		//   posterClick(), timeText(), timeText()"                     //
-		// =========================================================== //
-
 		makeTextDate(dateArray) {
 			const [year, month, day] = dateArray
 			return `${year}-${month}-${day}`
