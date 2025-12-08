@@ -64,11 +64,6 @@ const vue_app = Vue.createApp({
 	data() {
 		return {
 			movies: [],
-
-			// =========================================================== //
-			// ✅ STEP 3 COMMIT                                            //
-			// COMMIT MESSAGE: "Created title, owner, githubLink variables" //
-			// =========================================================== //
 			title: "IMDB + My Top Movies",
 			owner: "Yaz's Github",
 			githubLink: "https://github.com/YasminaN1/Movie-Posters"
