@@ -58,7 +58,7 @@ const vue_app = Vue.createApp({
 	data() {
 		return {
 			movies: [],
-			title: "IMDB + My Top Movies",
+			title: "The Retro Cinema Collection",
 			owner: "Yaz's Github",
 			githubLink: "https://github.com/YasminaN1/Movie-Posters"
 		}

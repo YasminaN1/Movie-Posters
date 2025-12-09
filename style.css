@@ -5,7 +5,7 @@ body {
     padding: 0;
     width: 100%;
     overflow: auto;
-    background-image: url(examples/glitterblue.avif);
+    background-image: url(examples/phone.jpg);
     background-repeat: no-repeat;
   background-size: cover;
   height:100vh;
@@ -13,6 +13,9 @@ body {
   font-family: "chorine-large", sans-serif;
   font-weight: 300;
   font-style: normal;
+  font-family: "keiko-titling", sans-serif;
+font-weight: 700;
+font-style: normal;
 }
 
 /* This stylizes the header area */
