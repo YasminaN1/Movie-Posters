@@ -24,29 +24,39 @@ font-style: normal;
 }
 .header h1 {
     display: inline-block;
-    color: white;
+
+    /* Keep your current font */
+    font-family: "keiko-titling", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 70px;
+
+    /* Animation styling */
+    background-image: linear-gradient(
+        transparent 50%,
+        #e1fffe 50%,
+        #b0f8ff 85%,
+        transparent 85%,
+        transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    animation: animatedBackground 2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s forwards;
+
+    /* Keep your color */
+    color: rgb(69, 6, 6);
 }
 
+/* Keyframes for underline animation */
+@keyframes animatedBackground {
+    to {
+        background-size: 100% 100%;
+    }
+}
 /* This stylizes the main page area */
 .main {
-    background-color: #f2f2f2;
+    background-color: #f7e4ee;
     padding: 40px 0;
-}
-
-/* This stylizes the poster area and poster images */
-.thumbnail {
-    border: 0px;
-    position: relative;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 0;
-    background-color:#dddddd;
-}
-.thumbnail img {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 5px;
-    border: 2px dashed black;
 }
 
 /* This stylizes your "Poster X of Y" text */
@@ -56,6 +66,47 @@ font-style: normal;
 	font-size: x-small;
 	float: right;
 	padding-right: 5px;
+}
+
+/* This stylizes the poster area and poster images */
+.thumbnail {
+    border: 0px;
+    position: relative;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #fff0f6, #ffe4e9);
+    box-shadow: 4px 4px 12px rgba(214, 51, 132, 0.2);
+}
+.thumbnail img {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 5px;
+    border: 3px solid #ff6b9d;
+}
+
+/* This stylizes your "Poster X of Y" text */
+.imageInfo {
+	color: #d63384;
+	font-style: italic;
+	font-size: x-small;
+	float: right;
+	padding-right: 5px;
+}
+
+/* This stylizes your Title and Rating Text */
+.title,
+.released {
+    color: #d63384;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+.released,
+.rated {
+    color: #b02a67;
+    font-size: 14px;
+    font-weight: 200;
 }
 
 /* This stylizes your Title and Rating Text */
@@ -68,17 +119,17 @@ font-style: normal;
 }
 .released,
 .rated {
-    color: #5d5d5d;
+    color: #c61515;
     font-size: 14px;
     font-weight: 200;
 }
 
 /* This shapes your IMDB score area */
 .score {
-    background-color: #39D1B4;
+    background: linear-gradient(135deg, #ff6b9d, #ffc3dc);
     color: #fff;
     font-size: 18px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(214, 51, 132, 0.3);
     font-weight: 200;
     height: 80px;
     line-height: 80px;
@@ -87,6 +138,7 @@ font-style: normal;
     position: absolute;
     top: 50px;
     right: 25px;
+    border-radius: 50%;
 }
 
 /* This contains your like and dislike buttons */
@@ -127,6 +179,18 @@ font-style: normal;
 #github{
 	font-size: small;
 }
+#github{
+	font-size: small;
+    background: linear-gradient(135deg, #ffd6e8, #ffc3dc);
+    border: 2px solid #ff6b9d;
+    color: #d63384;
+    font-weight: bold;
+}
+
+#github:hover {
+    background: linear-gradient(135deg, #ffc3dc, #ff6b9d);
+    color: #fff;
+}
 
 /* ADD YOUR LIKE AND DISLIKE HOVER/MOUSEOVER CSS CODE HERE */
 .score {
@@ -150,9 +214,18 @@ font-style: normal;
 	transition: 0.3s ease;
 }
 
+.likes {
+    background: linear-gradient(135deg, #a8e6cf, #7fd3b8);
+    color: #fff;
+}
+
+.dislikes {
+    background: linear-gradient(135deg, #ffb3ba, #ff8a8a);
+    color: #fff;
+}
 
 .poster {
-  width: 700px;
-  height: 900px;
+  width: 600px;
+  height: 1000px;
   object-fit: cover;
 }
